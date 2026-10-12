@@ -1,0 +1,4 @@
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+-> resultados\02_calidad_dengue.json
+{'filas_leidas': 1029421, 'filas_validas': 1029421, 'filas_rechazadas': 0, 'porcentaje_validas': 100.0, 'filas_identicas_conservadas': 152091, 'casos_prov_trujillo': 70564, 'segundos': 45.59}

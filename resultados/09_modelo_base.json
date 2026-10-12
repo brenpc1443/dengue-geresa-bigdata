@@ -1,0 +1,202 @@
+{
+  "filas_entrenamiento": 780,
+  "positivos_entrenamiento": 85,
+  "filas_prueba": 517,
+  "positivos_prueba": 163,
+  "modelo_regresion_logistica": {
+    "VP": 152,
+    "FP": 53,
+    "FN": 11,
+    "VN": 301,
+    "precision": 0.741,
+    "sensibilidad": 0.933,
+    "f1": 0.826,
+    "exactitud": 0.876,
+    "areaUnderPR": 0.944,
+    "areaUnderROC": 0.969
+  },
+  "regla_actual_persistencia": {
+    "VP": 134,
+    "FP": 5,
+    "FN": 29,
+    "VN": 349,
+    "precision": 0.964,
+    "sensibilidad": 0.822,
+    "f1": 0.887,
+    "exactitud": 0.934,
+    "areaUnderPR": 0.978,
+    "areaUnderROC": 0.986
+  },
+  "anticipacion_modelo": [
+    {
+      "inicio_brote": "SE10-2015",
+      "primera_alerta": "SE06-2015",
+      "semanas_de_anticipacion": 4
+    },
+    {
+      "inicio_brote": "SE08-2016",
+      "primera_alerta": "SE51-2015",
+      "semanas_de_anticipacion": 9
+    },
+    {
+      "inicio_brote": "SE09-2017",
+      "primera_alerta": "SE03-2017",
+      "semanas_de_anticipacion": 6
+    },
+    {
+      "inicio_brote": "SE09-2023",
+      "primera_alerta": "SE07-2023",
+      "semanas_de_anticipacion": 2
+    }
+  ],
+  "anticipacion_regla": [
+    {
+      "inicio_brote": "SE10-2015",
+      "primera_alerta": "SE10-2015",
+      "semanas_de_anticipacion": 0
+    },
+    {
+      "inicio_brote": "SE08-2016",
+      "primera_alerta": "SE08-2016",
+      "semanas_de_anticipacion": 0
+    },
+    {
+      "inicio_brote": "SE09-2017",
+      "primera_alerta": "SE09-2017",
+      "semanas_de_anticipacion": 0
+    },
+    {
+      "inicio_brote": "SE09-2023",
+      "primera_alerta": "SE09-2023",
+      "semanas_de_anticipacion": 0
+    }
+  ],
+  "coeficientes_estandarizados": [
+    [
+      "sem_cos",
+      0.879
+    ],
+    [
+      "log_casos",
+      0.87
+    ],
+    [
+      "log_casos_l1",
+      0.768
+    ],
+    [
+      "sem_sin",
+      0.546
+    ],
+    [
+      "temp_media_c_4s",
+      0.515
+    ],
+    [
+      "humedad_rel_pct_4s",
+      0.388
+    ],
+    [
+      "precipitacion_mm_5a8s",
+      0.386
+    ],
+    [
+      "variacion_1s",
+      0.376
+    ],
+    [
+      "temp_media_c_5a8s",
+      0.354
+    ],
+    [
+      "log_casos_l2",
+      0.289
+    ],
+    [
+      "humedad_rel_pct_5a8s",
+      -0.276
+    ],
+    [
+      "precipitacion_mm_4s",
+      0.148
+    ],
+    [
+      "log_casos_l3",
+      0.013
+    ]
+  ],
+  "metricas_entrenamiento": {
+    "VP": 76,
+    "FP": 40,
+    "FN": 9,
+    "VN": 655,
+    "precision": 0.655,
+    "sensibilidad": 0.894,
+    "f1": 0.756,
+    "exactitud": 0.937,
+    "areaUnderPR": 0.856,
+    "areaUnderROC": 0.976
+  },
+  "probabilidad_2023_se1_se12": [
+    {
+      "semana": 1,
+      "casos": 1,
+      "prob": 0.342
+    },
+    {
+      "semana": 2,
+      "casos": 1,
+      "prob": 0.361
+    },
+    {
+      "semana": 3,
+      "casos": 0,
+      "prob": 0.214
+    },
+    {
+      "semana": 4,
+      "casos": 1,
+      "prob": 0.482
+    },
+    {
+      "semana": 5,
+      "casos": 1,
+      "prob": 0.441
+    },
+    {
+      "semana": 6,
+      "casos": 0,
+      "prob": 0.244
+    },
+    {
+      "semana": 7,
+      "casos": 2,
+      "prob": 0.702
+    },
+    {
+      "semana": 8,
+      "casos": 5,
+      "prob": 0.835
+    },
+    {
+      "semana": 9,
+      "casos": 24,
+      "prob": 0.978
+    },
+    {
+      "semana": 10,
+      "casos": 14,
+      "prob": 0.958
+    },
+    {
+      "semana": 11,
+      "casos": 17,
+      "prob": 0.982
+    },
+    {
+      "semana": 12,
+      "casos": 21,
+      "prob": 0.986
+    }
+  ]
+}

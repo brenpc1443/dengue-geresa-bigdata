@@ -1,0 +1,4 @@
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+-> resultados\03_calidad_clima.json
+{'filas_leidas_raw': 12067, 'dias_unicos': 12067, 'segundos': 23.5}

@@ -1,0 +1,27 @@
+{
+  "datalake": "file:///C:/Users/HP/Escritorio/big data/proyecto/datalake",
+  "archivos": [
+    {
+      "fuente": "dengue",
+      "archivo": "dengue_vigilancia_2000_2024.csv",
+      "bytes": 108550394,
+      "sha256": "35ec0840afa486992fa552a5762fd19eed332b06a2f1d0ea58af73c95bf6fd71",
+      "destino": "file:///C:/Users/HP/Escritorio/big data/proyecto/datalake/raw/dengue/fecha_obtencion=2026-09-16/dengue_vigilancia_2000_2024.csv"
+    },
+    {
+      "fuente": "clima",
+      "archivo": "clima_trujillo_aeropuerto_noaa_1990_2025.csv",
+      "bytes": 1653287,
+      "sha256": "b03488572d68f21489a7297570c743e568226ac79404e0d5ba14305199072e45",
+      "destino": "file:///C:/Users/HP/Escritorio/big data/proyecto/datalake/raw/clima/fecha_obtencion=2026-09-16/clima_trujillo_aeropuerto_noaa_1990_2025.csv"
+    },
+    {
+      "fuente": "rumores_cdc",
+      "archivo": "1103 PDF",
+      "bytes": 358631170,
+      "sha256": "ver resultados/manifiesto_rumores_sha256.csv",
+      "destino": "file:///C:/Users/HP/Escritorio/big data/proyecto/datalake/raw/rumores_cdc/fecha_obtencion=2026-09-30"
+    }
+  ],
+  "segundos": 4.02
+}

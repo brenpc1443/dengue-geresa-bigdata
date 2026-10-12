@@ -1,0 +1,10 @@
+{
+  "semanas_calendario": 1304,
+  "semanas_con_casos": 477,
+  "semanas_con_casos_fuera_de_calendario": 0,
+  "semanas_sin_clima": 20,
+  "semanas_con_clima_incompleto_menos_4_dias": 14,
+  "semanas_sobre_umbral": 197,
+  "casos_totales_serie": 70564,
+  "segundos": 27.67
+}

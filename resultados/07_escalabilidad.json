@@ -1,0 +1,59 @@
+{
+  "bytes_por_copia_parquet": 5343206,
+  "x1": {
+    "factor": 1,
+    "filas": 1029421,
+    "filas_validas": 1029421,
+    "segundos_calidad": 2.42,
+    "segundos_total": 9.24,
+    "filas_por_segundo": 111409,
+    "casos_trujillo_en_serie": 70564,
+    "heap_jvm_pico_mib": 0.0,
+    "leido_de_disco_mib": 1.6,
+    "tiempo_cpu_tareas_s": 5.5,
+    "control_casos_ok": true,
+    "volumen_csv_equivalente_mib": 103.5
+  },
+  "x10": {
+    "factor": 10,
+    "filas": 10294210,
+    "filas_validas": 10294210,
+    "segundos_calidad": 8.07,
+    "segundos_total": 22.02,
+    "filas_por_segundo": 467493,
+    "casos_trujillo_en_serie": 705640,
+    "heap_jvm_pico_mib": 605.7,
+    "leido_de_disco_mib": 11.5,
+    "tiempo_cpu_tareas_s": 40.0,
+    "control_casos_ok": true,
+    "volumen_csv_equivalente_mib": 1035.2
+  },
+  "x50": {
+    "factor": 50,
+    "filas": 51471050,
+    "filas_validas": 51471050,
+    "segundos_calidad": 28.73,
+    "segundos_total": 70.98,
+    "filas_por_segundo": 725148,
+    "casos_trujillo_en_serie": 3528200,
+    "heap_jvm_pico_mib": 773.4,
+    "leido_de_disco_mib": 55.5,
+    "tiempo_cpu_tareas_s": 192.3,
+    "control_casos_ok": true,
+    "volumen_csv_equivalente_mib": 5176.1
+  },
+  "x100": {
+    "factor": 100,
+    "filas": 102942100,
+    "filas_validas": 102942100,
+    "segundos_calidad": 57.16,
+    "segundos_total": 137.15,
+    "filas_por_segundo": 750580,
+    "casos_trujillo_en_serie": 7056400,
+    "heap_jvm_pico_mib": 636.1,
+    "leido_de_disco_mib": 110.6,
+    "tiempo_cpu_tareas_s": 390.4,
+    "control_casos_ok": true,
+    "volumen_csv_equivalente_mib": 10352.2
+  }
+}

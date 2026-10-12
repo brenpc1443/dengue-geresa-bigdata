@@ -1,0 +1,32 @@
+{
+  "pdf_leidos": 1103,
+  "pdf_sin_notas": 21,
+  "pdf_sin_fecha": 5,
+  "notas_extraidas": 6660,
+  "notas_sin_url_fuente": 0,
+  "notas_dengue": 771,
+  "notas_dengue_la_libertad": 47,
+  "notas_dengue_la_libertad_por_ano": {
+    "2020": 1,
+    "2021": 5,
+    "2022": 2,
+    "2023": 12,
+    "2024": 27
+  },
+  "eventos_dengue_la_libertad": {
+    "alerta": 6,
+    "accion_control": 9,
+    "otro": 17,
+    "fallecidos": 15
+  },
+  "notas_por_ano": {
+    "null": 21,
+    "2020": 906,
+    "2021": 1027,
+    "2022": 951,
+    "2023": 929,
+    "2024": 1122,
+    "2025": 1704
+  },
+  "segundos": 192.45
+}

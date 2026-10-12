@@ -1,0 +1,57 @@
+{
+  "filas_leidas": 1029421,
+  "filas_validas": 1029421,
+  "filas_rechazadas": 0,
+  "porcentaje_validas": 100.0,
+  "cumplimiento_por_regla": {
+    "r1_ano_valido": {
+      "cumplen": 1029421,
+      "no_cumplen": 0,
+      "porcentaje": 100.0
+    },
+    "r2_semana_valida": {
+      "cumplen": 1029421,
+      "no_cumplen": 0,
+      "porcentaje": 100.0
+    },
+    "r3_ubigeo_6_digitos": {
+      "cumplen": 1029421,
+      "no_cumplen": 0,
+      "porcentaje": 100.0
+    },
+    "r4_diagnostico_coherente": {
+      "cumplen": 1029421,
+      "no_cumplen": 0,
+      "porcentaje": 100.0
+    },
+    "r5_sexo_valido": {
+      "cumplen": 1029421,
+      "no_cumplen": 0,
+      "porcentaje": 100.0
+    },
+    "r6_edad_en_rango": {
+      "cumplen": 1029407,
+      "no_cumplen": 14,
+      "porcentaje": 99.9986
+    }
+  },
+  "completitud_raw_porcentaje": {
+    "departamento": 100.0,
+    "provincia": 100.0,
+    "distrito": 100.0,
+    "localidad": 94.76,
+    "enfermedad": 100.0,
+    "ano": 100.0,
+    "semana": 100.0,
+    "diagnostic": 100.0,
+    "diresa": 100.0,
+    "ubigeo": 100.0,
+    "localcod": 85.56,
+    "edad": 100.0,
+    "tipo_edad": 100.0,
+    "sexo": 100.0
+  },
+  "filas_identicas_conservadas": 152091,
+  "casos_prov_trujillo": 70564,
+  "segundos": 45.59
+}

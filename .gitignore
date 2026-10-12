@@ -1,0 +1,16 @@
+# datos completos: no se suben (el CSV de dengue pesa 103.5 MiB, más que el límite de GitHub)
+datos/
+datalake/
+*.csv
+!muestra/*.csv
+!resultados/*.csv
+*.pdf
+!muestra/**/*.pdf
+# entorno
+__pycache__/
+.venv/
+venv/
+spark-warehouse/
+metastore_db/
+derby.log
+.ipynb_checkpoints/

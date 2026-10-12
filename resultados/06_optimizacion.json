@@ -1,0 +1,55 @@
+{
+  "A_formato_y_particionado": {
+    "antes_csv_completo": {
+      "mediana_s": 1.568,
+      "tiempos_s": [
+        2.143,
+        1.666,
+        1.543,
+        1.447,
+        1.568
+      ]
+    },
+    "despues_parquet_particionado": {
+      "mediana_s": 0.526,
+      "tiempos_s": [
+        0.822,
+        0.704,
+        0.526,
+        0.5,
+        0.45
+      ]
+    },
+    "casos_2023_verificados": 17690,
+    "plan_fisico_despues": [
+      "+- FileScan parquet [semana#104,departamento#105,provincia#106,distrito#107,distrito_serie#108,ubigeo#109,ubigeo_prov#110,es_prov_trujillo#111,diresa#112,diagnostic#113,enfermedad#114,edad_anios#115,grupo_edad#116,sexo#117,ano#118] Batched: true, DataFilters: [isnotnull(es_prov_trujillo#111), es_prov_trujillo#111], Format: Parquet, Location: InMemoryFileIndex(1 paths)[file:/C:/Users/HP/Escritorio/big data/proyecto/datalake/processed/casos], PartitionFilters: [isnotnull(ano#118), (ano#118 = 2023)], PushedFilters: [IsNotNull(es_prov_trujillo), EqualTo(es_prov_trujillo,true)], ReadSchema: struct<semana:int,departamento:string,provincia:string,distrito:string,distrito_serie:string,ubig..."
+    ],
+    "mejora_veces": 2.98,
+    "reduccion_pct": 66.5
+  },
+  "B_join_integracion": {
+    "antes_sort_merge_join": {
+      "mediana_s": 3.083,
+      "tiempos_s": [
+        4.026,
+        2.627,
+        2.498,
+        3.083,
+        3.089
+      ]
+    },
+    "despues_broadcast_join": {
+      "mediana_s": 2.331,
+      "tiempos_s": [
+        2.578,
+        2.331,
+        2.142,
+        1.906,
+        2.407
+      ]
+    },
+    "mejora_veces": 1.32,
+    "reduccion_pct": 24.4
+  },
+  "segundos_totales": 73.65
+}

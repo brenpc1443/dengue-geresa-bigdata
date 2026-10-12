@@ -1,0 +1,302 @@
+{
+  "p1_casos_por_ano": [
+    {
+      "ano": 2000,
+      "casos": 1496,
+      "semanas_sobre_umbral": 10,
+      "maximo_semanal": 365
+    },
+    {
+      "ano": 2001,
+      "casos": 5716,
+      "semanas_sobre_umbral": 18,
+      "maximo_semanal": 796
+    },
+    {
+      "ano": 2002,
+      "casos": 0,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 0
+    },
+    {
+      "ano": 2003,
+      "casos": 0,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 0
+    },
+    {
+      "ano": 2004,
+      "casos": 263,
+      "semanas_sobre_umbral": 4,
+      "maximo_semanal": 82
+    },
+    {
+      "ano": 2005,
+      "casos": 258,
+      "semanas_sobre_umbral": 7,
+      "maximo_semanal": 33
+    },
+    {
+      "ano": 2006,
+      "casos": 9,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 1
+    },
+    {
+      "ano": 2007,
+      "casos": 1477,
+      "semanas_sobre_umbral": 10,
+      "maximo_semanal": 339
+    },
+    {
+      "ano": 2008,
+      "casos": 0,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 0
+    },
+    {
+      "ano": 2009,
+      "casos": 132,
+      "semanas_sobre_umbral": 1,
+      "maximo_semanal": 27
+    },
+    {
+      "ano": 2010,
+      "casos": 434,
+      "semanas_sobre_umbral": 8,
+      "maximo_semanal": 87
+    },
+    {
+      "ano": 2011,
+      "casos": 17,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 8
+    },
+    {
+      "ano": 2012,
+      "casos": 92,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 9
+    },
+    {
+      "ano": 2013,
+      "casos": 23,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 7
+    },
+    {
+      "ano": 2014,
+      "casos": 10,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 3
+    },
+    {
+      "ano": 2015,
+      "casos": 1682,
+      "semanas_sobre_umbral": 25,
+      "maximo_semanal": 115
+    },
+    {
+      "ano": 2016,
+      "casos": 2358,
+      "semanas_sobre_umbral": 20,
+      "maximo_semanal": 227
+    },
+    {
+      "ano": 2017,
+      "casos": 3585,
+      "semanas_sobre_umbral": 20,
+      "maximo_semanal": 382
+    },
+    {
+      "ano": 2018,
+      "casos": 1,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 1
+    },
+    {
+      "ano": 2019,
+      "casos": 10,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 2
+    },
+    {
+      "ano": 2020,
+      "casos": 8,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 3
+    },
+    {
+      "ano": 2021,
+      "casos": 60,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 17
+    },
+    {
+      "ano": 2022,
+      "casos": 40,
+      "semanas_sobre_umbral": 0,
+      "maximo_semanal": 6
+    },
+    {
+      "ano": 2023,
+      "casos": 17690,
+      "semanas_sobre_umbral": 42,
+      "maximo_semanal": 1156
+    },
+    {
+      "ano": 2024,
+      "casos": 35203,
+      "semanas_sobre_umbral": 32,
+      "maximo_semanal": 3289
+    }
+  ],
+  "p1_participacion_2023_2024_pct": 75.0,
+  "p2_semana_pico_casos": 15,
+  "p2_semana_pico_temperatura": 8,
+  "p2_pct_casos_semanas_1_a_20": 68.6,
+  "p3_correlaciones": {
+    "Temperatura media": {
+      "0": 0.292,
+      "1": 0.336,
+      "2": 0.372,
+      "3": 0.407,
+      "4": 0.435,
+      "5": 0.456,
+      "6": 0.472,
+      "7": 0.485,
+      "8": 0.494,
+      "9": 0.496,
+      "10": 0.495,
+      "11": 0.489,
+      "12": 0.475
+    },
+    "Humedad relativa": {
+      "0": 0.052,
+      "1": 0.026,
+      "2": 0.01,
+      "3": -0.013,
+      "4": -0.034,
+      "5": -0.048,
+      "6": -0.056,
+      "7": -0.068,
+      "8": -0.084,
+      "9": -0.09,
+      "10": -0.101,
+      "11": -0.109,
+      "12": -0.119
+    },
+    "Precipitación": {
+      "0": 0.013,
+      "1": 0.022,
+      "2": 0.03,
+      "3": 0.029,
+      "4": 0.031,
+      "5": 0.035,
+      "6": 0.041,
+      "7": 0.04,
+      "8": 0.044,
+      "9": 0.05,
+      "10": 0.052,
+      "11": 0.05,
+      "12": 0.047
+    }
+  },
+  "p3_rezago_max_temp": 9,
+  "p4_inicio_brote_2023": 9,
+  "p4_semanas_con_accion_control_2023": [
+    19
+  ],
+  "p4_rezago_semanas": 10,
+  "p4_casos_acumulados_antes_de_primera_accion": 1457,
+  "p4_semana_pico_2023": 24,
+  "p4_notas_cdc_dengue_ll_2023": 12,
+  "p5_distritos": [
+    {
+      "distrito_serie": "LA ESPERANZA",
+      "2023": 5596,
+      "2024": 9575,
+      "total": 15171,
+      "pct": 28.7
+    },
+    {
+      "distrito_serie": "TRUJILLO",
+      "2023": 4035,
+      "2024": 8035,
+      "total": 12070,
+      "pct": 22.8
+    },
+    {
+      "distrito_serie": "EL PORVENIR",
+      "2023": 3465,
+      "2024": 6248,
+      "total": 9713,
+      "pct": 18.4
+    },
+    {
+      "distrito_serie": "FLORENCIA DE MORA",
+      "2023": 1610,
+      "2024": 3561,
+      "total": 5171,
+      "pct": 9.8
+    },
+    {
+      "distrito_serie": "LAREDO",
+      "2023": 1379,
+      "2024": 1973,
+      "total": 3352,
+      "pct": 6.3
+    },
+    {
+      "distrito_serie": "MOCHE",
+      "2023": 302,
+      "2024": 2740,
+      "total": 3042,
+      "pct": 5.8
+    },
+    {
+      "distrito_serie": "HUANCHACO",
+      "2023": 958,
+      "2024": 1422,
+      "total": 2380,
+      "pct": 4.5
+    },
+    {
+      "distrito_serie": "SALAVERRY",
+      "2023": 218,
+      "2024": 1290,
+      "total": 1508,
+      "pct": 2.9
+    },
+    {
+      "distrito_serie": "VICTOR LARCO HERRERA",
+      "2023": 122,
+      "2024": 315,
+      "total": 437,
+      "pct": 0.8
+    },
+    {
+      "distrito_serie": "SIMBAL",
+      "2023": 5,
+      "2024": 27,
+      "total": 32,
+      "pct": 0.1
+    },
+    {
+      "distrito_serie": "POROTO",
+      "2023": 0,
+      "2024": 17,
+      "total": 17,
+      "pct": 0.0
+    }
+  ],
+  "notas_dengue_por_ano_nacional": {
+    "null": 4,
+    "2020": 44,
+    "2021": 53,
+    "2022": 88,
+    "2023": 189,
+    "2024": 269,
+    "2025": 124
+  }
+}
