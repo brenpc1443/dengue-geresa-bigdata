@@ -12,6 +12,9 @@ Partición temporal (sin mezclar el futuro en el entrenamiento):
 Comparación: regla actual "alertar cuando la semana t ya supera el umbral" (persistencia).
 Métricas: AUC-PR (adecuada al desbalance), AUC-ROC, precisión, sensibilidad, F1 y semanas de
 anticipación de la primera alerta al inicio de cada brote del periodo de prueba.
+
+Entrada: oro/serie_semanal_trujillo. Salida: oro/fact_alerta_semana (una fila = semana x provincia x
+versión del modelo, solo el periodo de prueba) y resultados/09_modelo_base.json.
 """
 import math
 
@@ -19,9 +22,10 @@ from pyspark.ml import Pipeline
 from pyspark.ml.classification import LogisticRegression
 from pyspark.ml.evaluation import BinaryClassificationEvaluator
 from pyspark.ml.feature import Imputer, StandardScaler, VectorAssembler
+from pyspark.ml.functions import vector_to_array
 from pyspark.sql import Window, functions as F
 
-from comun import UMBRAL_BROTE, guardar_json, ruta, sesion
+from comun import CORRIDA_ID, UBIGEO_PROV_TRUJILLO, UMBRAL_BROTE, escribir, guardar_json, leer, semana_key, sesion
 
 HORIZONTE = 4
 FIN_ENTRENAMIENTO = 2014
@@ -87,7 +91,7 @@ def anticipacion(pred, col_pred):
 
 def main():
     spark = sesion("09_modelo_base")
-    serie = spark.read.parquet(ruta("curated", "serie_semanal_trujillo"))
+    serie = leer(spark, "oro", "serie_semanal_trujillo")
     df = preparar(serie).cache()
     train = df.filter(F.col("ano") <= FIN_ENTRENAMIENTO)
     test = df.filter(F.col("ano") > FIN_ENTRENAMIENTO)
@@ -126,6 +130,15 @@ def main():
     informe["probabilidad_2023_se1_se12"] = [
         {"semana": r["semana"], "casos": r["casos"], "prob": round(float(r["probability"][1]), 3)}
         for r in pred.filter("ano = 2023 AND semana <= 12").orderBy("semana").collect()]
+    # hecho de oro para el tablero (K4): probabilidad semanal de brote en las 4 semanas siguientes
+    alerta = (pred.select(semana_key().alias("semana_key"),
+                          F.lit(UBIGEO_PROV_TRUJILLO).alias("ubigeo_prov"),
+                          F.lit(f"lr_base_{CORRIDA_ID}").alias("modelo_version"),
+                          F.round(vector_to_array("probability")[1], 4).alias("prob_brote_4s"),
+                          (F.col("prediction") == 1.0).alias("alerta"),
+                          (F.col("casos") > UMBRAL_BROTE).alias("supera_umbral_real")))
+    escribir(alerta.coalesce(1), "oro", "fact_alerta_semana")
+    informe["filas_fact_alerta_semana"] = alerta.count()
     guardar_json("09_modelo_base.json", informe)
     print({k: v for k, v in informe.items() if k != "probabilidad_2023_se1_se12"})
     spark.stop()
