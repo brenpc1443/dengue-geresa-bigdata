@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Ejecuta el pipeline en Google Cloud con un clúster temporal de Dataproc
-# ("Managed Service for Apache Spark"): crear -> etapas 01..10 -> prueba 2 vs 4 workers -> borrar.
+# ("Managed Service for Apache Spark"): crear -> etapas 01..11 -> prueba 2 vs 4 workers -> borrar.
 #
 # El clúster cobra mientras exista, incluso si queda en estado de error. Por eso:
 #   - se borra al salir del script, termine bien o mal (trap EXIT);
@@ -27,7 +27,7 @@ TIPO_MAQUINA="${TIPO_MAQUINA:-n2-standard-4}"
 N_WORKERS="${N_WORKERS:-2}"
 N_WORKERS_ESCALADO="${N_WORKERS_ESCALADO:-4}"
 BQ_DATASET="${BQ_DATASET:-oro}"
-ETAPAS="${ETAPAS:-2 3 4 5 6 7 8 9 10}"
+ETAPAS="${ETAPAS:-2 3 4 5 6 7 8 9 10 11}"
 export CORRIDA_ID="${CORRIDA_ID:-$(date '+%Y%m%dT%H%M%S')}"
 CLUSTER="dengue-$(echo "$CORRIDA_ID" | tr '[:upper:]' '[:lower:]')"
 LAGO="gs://$BUCKET/datalake"
@@ -74,7 +74,7 @@ enviar() {   # enviar <script> [argumentos...]
 declare -A SCRIPTS=(
   [2]="02_limpieza_dengue.py" [3]="03_limpieza_clima.py" [4]="04_extraccion_rumores.py"
   [5]="05_integracion.py" [6]="06_optimizacion.py" [8]="08_eda.py" [9]="09_modelo_base.py"
-  [10]="10_publicar_oro.py"
+  [10]="10_publicar_oro.py" [11]="11_privacidad.py"
 )
 for n in $ETAPAS; do
   if [ "$n" = 7 ]; then

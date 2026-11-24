@@ -45,7 +45,8 @@ repo/
 │   ├── 07_escalabilidad.py  réplicas x1, x10, x50, x100 (en el clúster, con 2 y 4 workers)
 │   ├── 08_eda.py            figuras del análisis exploratorio
 │   ├── 09_modelo_base.py    regresión logística (Spark MLlib) -> oro/fact_alerta_semana
-│   └── 10_publicar_oro.py   comprueba los indicadores K1-K5 y publica oro en BigQuery
+│   ├── 10_publicar_oro.py   comprueba los indicadores K1-K5 y publica oro en BigQuery
+│   └── 11_privacidad.py     riesgo de reidentificación (k-anonimato) en plata y oro
 ├── docs/                    diagrama de arquitectura
 ├── muestra/                 muestra pequeña de las tres fuentes
 └── resultados/              reportes JSON, figuras y logs de la última corrida
@@ -98,7 +99,7 @@ entrena con 2000-2014 y la muestra solo trae clima de 2023-2024.
 ## Ejecución
 
 ```bash
-./run_pipeline.sh            # etapas 1 a 10
+./run_pipeline.sh            # etapas 1 a 11
 ./run_pipeline.sh 2 5        # solo algunas etapas
 ```
 
@@ -124,7 +125,7 @@ PROYECTO=<id-del-proyecto> BUCKET=<bucket-en-us-central1> ./run_dataproc.sh
 El script:
 - sube las fuentes a `gs://<bucket>/datalake/bronce/`;
 - crea un clúster Dataproc temporal (imagen 3.0.5: Spark 4.1.2 sobre YARN, Delta Lake 4.2.0);
-- envía las etapas 2 a 10 y repite la prueba de escalabilidad con 4 workers;
+- envía las etapas 2 a 11 y repite la prueba de escalabilidad con 4 workers;
 - copia los reportes a `resultados/nube/<corrida>/`;
 - **borra el clúster siempre**, aunque algo falle. Como seguro adicional, el clúster se borra solo
   tras 30 minutos sin trabajos o a las 6 horas.
