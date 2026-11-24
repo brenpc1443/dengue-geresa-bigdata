@@ -1,6 +1,6 @@
 """Etapa 8 - Análisis exploratorio sobre los datos limpios (sección 4.1).
 
-Lee solo las zonas processed y curated. Cada gráfico responde a una pregunta:
+Lee solo las capas plata y oro. Cada gráfico responde a una pregunta:
   P1. ¿Cuándo hubo brotes en la provincia de Trujillo y qué tan excepcional fue 2023-2024?
   P2. ¿Los casos siguen la estación cálida? (estacionalidad de casos y temperatura)
   P3. ¿Con cuántas semanas de adelanto se mueve el clima respecto de los casos? (correlación con rezago)
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pyspark.sql import functions as F
 
-from comun import RESULTADOS, UMBRAL_BROTE, guardar_json, ruta, sesion
+from comun import RESULTADOS, UMBRAL_BROTE, guardar_json, leer, sesion, subir_al_lago
 
 FIG = RESULTADOS / "figuras"
 FIG.mkdir(exist_ok=True)
@@ -27,14 +27,19 @@ AZUL, ROJO, GRIS, NARANJA = "#1f5a99", "#c0392b", "#7f8c8d", "#e67e22"
 def guardar(fig, nombre):
     fig.tight_layout()
     fig.savefig(FIG / nombre, dpi=200)
+    subir_al_lago(FIG / nombre, f"figuras/{nombre}")
     plt.close(fig)
 
 
 def main():
     spark = sesion("08_eda")
-    serie = spark.read.parquet(ruta("curated", "serie_semanal_trujillo")).orderBy("ano", "semana").toPandas()
-    distrito = spark.read.parquet(ruta("curated", "casos_semana_distrito"))
-    notas = spark.read.parquet(ruta("processed", "notas_cdc"))
+    serie = leer(spark, "oro", "serie_semanal_trujillo").orderBy("ano", "semana").toPandas()
+    # casos por semana y distrito de la provincia de Trujillo: hecho del esquema estrella + dimensiones
+    distrito = (leer(spark, "oro", "fact_casos_semana_distrito")
+                .join(leer(spark, "oro", "dim_geografia").select("ubigeo", "distrito_serie", "es_prov_trujillo"), "ubigeo")
+                .join(leer(spark, "oro", "dim_tiempo").select("semana_key", "ano", "semana"), "semana_key")
+                .filter("es_prov_trujillo"))
+    notas = leer(spark, "plata", "notas_cdc")
     hallazgos = {}
 
     # ---------------- P1: serie completa
