@@ -1,6 +1,11 @@
-pyspark==3.5.1
-pypdf>=4.0
-pandas>=2.0
+# Entorno local (pruebas con muestra/ o corrida en una sola máquina).
+# En Dataproc no se instala nada de esto: la imagen 3.0.5 trae Spark 4.1.2, Delta Lake 4.2.0,
+# Python 3.12, pandas y NumPy; pypdf se instala con la acción de inicio (infra/instalar_pypdf.sh).
+# delta-spark 4.2.0 en pip exige pyspark <= 4.1.1: la misma rama 4.1 que el clúster.
+pyspark==4.1.1
+delta-spark==4.2.0
+pypdf>=7.1
+pandas>=2.2
 pyarrow>=14.0
 matplotlib>=3.7
 numpy>=1.24
