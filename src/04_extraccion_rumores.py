@@ -1,4 +1,4 @@
-"""Etapa 4 - Extracción de texto de los PDF "Vigilancia de rumores" del CDC Perú (raw -> processed).
+"""Etapa 4 - Extracción de texto de los PDF "Vigilancia de rumores" del CDC Perú (bronce -> plata).
 
 Fuente no estructurada. Cada PDF es un reporte diario con varias notas de prensa con esta forma:
 
@@ -12,14 +12,16 @@ el texto de cada archivo y lo separa en notas. Cada nota se marca con:
   - menciona_la_libertad : la etiqueta de región o el texto se refieren a La Libertad / Trujillo
   - tipo_evento          : accion_control | fallecidos | alerta | otro
 
-Salida: processed/notas_cdc/ano=AAAA/ (Parquet) y resultados/04_calidad_rumores.json
+Salida: plata/notas_cdc/ano=AAAA/ (Delta), plata/_cuarentena/notas_cdc/ (notas sin fecha),
+        plata/_calidad/resultados/ (reglas n1-n3) y resultados/04_calidad_rumores.json
 """
 import io
 import re
 
 from pyspark.sql import functions as F, types as T
 
-from comun import Cronometro, guardar_json, ruta, semana_epidemiologica, sesion
+import calidad
+from comun import Cronometro, escribir, fecha_segura, guardar_json, ruta, semana_epidemiologica, sesion
 
 RE_REGION = re.compile(r"^\s*([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ .,'\-–/]{1,60}?)\s*\|\s*(.*)$")
 RE_FUENTE = re.compile(r"^\s*Fuente\s*:\s*(\S+)")
@@ -90,7 +92,7 @@ def main():
 
     pdfs = (spark.read.format("binaryFile").option("pathGlobFilter", "*.pdf")
             .option("recursiveFileLookup", True)
-            .load(ruta("raw", "rumores_cdc")))
+            .load(ruta("bronce", "rumores_cdc")))
     notas = (pdfs.repartition(16)
              .select(F.regexp_extract("path", r"([^/]+\.pdf)$", 1).alias("archivo"),
                      F.explode(extraer_udf("content")).alias("n"))
@@ -99,7 +101,7 @@ def main():
     texto_total = F.lower(F.concat_ws(" ", "titulo", "texto"))
     menciona_ll = F.col("region").isin(*LUGARES_LL) | texto_total.rlike("la libertad|trujillo")
     notas = (notas
-             .withColumn("fecha_reporte", F.to_date("fecha_reporte"))
+             .withColumn("fecha_reporte", fecha_segura("fecha_reporte"))
              .withColumn("ano", F.year("fecha_reporte"))
              .withColumn("ano_epi", ano_epi).withColumn("semana_epi", sem_epi)
              .withColumn("es_dengue", texto_total.contains("dengue"))
@@ -125,8 +127,19 @@ def main():
             "es_dengue AND menciona_la_libertad").groupBy("tipo_evento").count().collect()},
         "notas_por_ano": {r["ano"]: r["count"] for r in con_nota.groupBy("ano").count().orderBy("ano").collect()},
     }
-    (con_nota.repartition("ano").write.mode("overwrite").partitionBy("ano")
-     .parquet(ruta("processed", "notas_cdc")))
+    n_pdf = informe["pdf_leidos"]
+    resultados = [
+        calidad.resultado("n1", n_pdf, informe["pdf_sin_notas"]),
+        calidad.resultado("n2", n_pdf, informe["pdf_sin_fecha"]),
+        calidad.resultado("n3", informe["notas_extraidas"], informe["notas_sin_url_fuente"]),
+    ]
+    calidad.registrar(spark, resultados)
+    calidad.puerta(resultados)
+    informe["calidad"] = calidad.resumen(resultados)
+    # las notas sin fecha no se pueden ubicar en una semana: van a cuarentena
+    escribir(con_nota.filter("fecha_reporte IS NOT NULL").repartition("ano"), "plata", "notas_cdc", particion="ano")
+    escribir(con_nota.filter("fecha_reporte IS NULL").withColumn("_regla_fallida", F.lit("n2")),
+             "plata", "_cuarentena/notas_cdc")
     informe["segundos"] = reloj()
     guardar_json("04_calidad_rumores.json", informe)
     print(informe)
